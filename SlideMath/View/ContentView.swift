@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var greeting = "hello"
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text(greeting)
+            
+            Button("change greeting") {
+                greeting = "aloha"
+            }
         }
         .padding()
     }
