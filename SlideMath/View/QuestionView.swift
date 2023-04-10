@@ -17,62 +17,69 @@ struct QuestionView: View {
                 Spacer()
                 Image("background_question").resizable().scaledToFit()
             }
-            VStack(spacing: 50) {
-                HStack(alignment: .top) {
-                    Image("back_button")
-                    Spacer()
-                    Image("help_button")
-                }
-                ProgressView(value: Double(currentQuestion+1), total: Double(question.count))
-                    .tint(Color.blue)
-                    .listRowSeparator(.visible)
-                    .listRowSeparatorTint(Color.blue)
-                    .listSectionSeparator(.visible)
-                    .listSectionSeparatorTint(Color.blue)
-                    .background(Color(.white))
-                    .frame(width: 300, height: 23)
-                    .scaleEffect(x: 1, y: 24, anchor: .center)
-                    .cornerRadius(64)
-                Text(question[currentQuestion]).font(.title2).fontWeight(.semibold).foregroundColor(Color("green_text")).multilineTextAlignment(.center)
-                HStack(alignment: .center, spacing: 30) {
-                    Button(action: {
-                        currentQuestion = currentQuestion != 0 ? currentQuestion - 1 : currentQuestion
-                    }) {
-                        Image(currentQuestion == 0 ? "back_quest_inactive" : "back_quest_active")
+            ZStack {
+                VStack(spacing: 50) {
+                    HStack(alignment: .top) {
+                        Image("back_button")
+                        Spacer()
+                        Image("help_button")
                     }
-                    Button(action: {
-                        currentQuestion = currentQuestion == question.count-1 ? currentQuestion : currentQuestion + 1
-                    }) {
-                        Image(currentQuestion == question.count-1 ? "next_quest_inactive" : "next_quest_active")
-                    }
-                }
-                HStack() {
-                    Spacer()
-                    Slider(value: $value, in: -40...40, step: 1)
-                        .frame(width: 200.0, height: 20)
+                    ProgressView(value: Double(currentQuestion+1), total: Double(question.count))
                         .tint(Color.blue)
-                        .scaleEffect(x: 1, y:10, anchor: .center)
-                        .cornerRadius(50)
-                        .rotationEffect(.degrees(-90.0))
-                        .scaledToFit()
-                    
-                }
-                Spacer()
-                Spacer()
-                HStack{
-                    Button(action: {
-                        print("hint")
-                    }) {
-                        Image("hint_button")
-                    }
+                        .listRowSeparator(.visible)
+                        .listRowSeparatorTint(Color.blue)
+                        .listSectionSeparator(.visible)
+                        .listSectionSeparatorTint(Color.blue)
+                        .background(Color(.white))
+                        .frame(width: 300, height: 23)
+                        .scaleEffect(x: 1, y: 24, anchor: .center)
+                        .cornerRadius(64)
+                    Text(question[currentQuestion]).font(.title2).fontWeight(.semibold).foregroundColor(Color("green_text")).multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                     Spacer()
                 }
-                PrimaryButton(title: "Submit", isDisabled: currentQuestion == 0) {
-                    // TODO: Submit
+                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                VStack {
+                    Spacer()
+                    Spacer()
+                    HStack(alignment: .center, spacing: 30) {
+                        Button(action: {
+                            currentQuestion = currentQuestion != 0 ? currentQuestion - 1 : currentQuestion
+                        }) {
+                            Image(currentQuestion == 0 ? "back_quest_inactive" : "back_quest_active")
+                        }
+                        Button(action: {
+                            currentQuestion = currentQuestion == question.count-1 ? currentQuestion : currentQuestion + 1
+                        }) {
+                            Image(currentQuestion == question.count-1 ? "next_quest_inactive" : "next_quest_active")
+                        }
+                    }
+                    Spacer()
+                    Spacer()
+                    Spacer()
                 }
-                Spacer()
+                
+                VStack(spacing: 20) {
+                    Spacer()
+                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    HStack{
+                        Button(action: {
+                            print("hint")
+                        }) {
+                            Image("hint_button")
+                        }
+                        .padding(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                        Spacer()
+                    }
+                    
+                    
+                    PrimaryButton(title: "Submit", isDisabled: currentQuestion == 0) {
+                        // TODO: Submit
+                    }
+                    Spacer()
+                    Spacer()
+                }
             }
-            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
         }.ignoresSafeArea()
     }
 }
