@@ -17,6 +17,7 @@
 		3EF23C8729DAC07A00189F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8629DAC07A00189F8D /* Assets.xcassets */; };
 		3EF23C8A29DAC07A00189F8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8929DAC07A00189F8D /* Preview Assets.xcassets */; };
 		889CBB2729E2E372005039CF /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CBB2629E2E372005039CF /* QuestionView.swift */; };
+		889CBB3529E6ECB1005039CF /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CBB3429E6ECB1005039CF /* CustomSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		3EF23C8629DAC07A00189F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EF23C8929DAC07A00189F8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		889CBB2629E2E372005039CF /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		889CBB3429E6ECB1005039CF /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSlider.swift; path = ../../../newmath/SlideMath/SlideMath/Component/CustomSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				3E2F949429DEA0CF00A03B0B /* PrimaryButton.swift */,
 				3E2F949829DEB31200A03B0B /* SecondaryButton.swift */,
+				889CBB3429E6ECB1005039CF /* CustomSlider.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37B04B7A29E4F4720014433B /* Spotlight.swift in Sources */,
+				889CBB3529E6ECB1005039CF /* CustomSlider.swift in Sources */,
 				3E2F949929DEB31200A03B0B /* SecondaryButton.swift in Sources */,
 				3EF23C8529DAC07900189F8D /* ContentView.swift in Sources */,
 				3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */,
