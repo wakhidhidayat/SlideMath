@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37B04B7A29E4F4720014433B /* Spotlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B04B7929E4F4720014433B /* Spotlight.swift */; };
 		3E2F949329DE7E9700A03B0B /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F949229DE7E9700A03B0B /* ResultView.swift */; };
 		3E2F949529DEA0CF00A03B0B /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F949429DEA0CF00A03B0B /* PrimaryButton.swift */; };
 		3E2F949729DEA45B00A03B0B /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F949629DEA45B00A03B0B /* Color+Ext.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37B04B7929E4F4720014433B /* Spotlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotlight.swift; sourceTree = "<group>"; };
 		3E2F949229DE7E9700A03B0B /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		3E2F949429DEA0CF00A03B0B /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		3E2F949629DEA45B00A03B0B /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
@@ -42,6 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37B04B7829E4F43B0014433B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				37B04B7929E4F4720014433B /* Spotlight.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		3EA1681E29DEBF7200BEC247 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		3EF23C8129DAC07900189F8D /* SlideMath */ = {
 			isa = PBXGroup;
 			children = (
+				37B04B7829E4F43B0014433B /* Helpers */,
 				3EF23C8229DAC07900189F8D /* SlideMathApp.swift */,
 				3EA1681F29DEBF8000BEC247 /* Component */,
 				3EA1681E29DEBF7200BEC247 /* View */,
@@ -168,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B04B7A29E4F4720014433B /* Spotlight.swift in Sources */,
 				3E2F949929DEB31200A03B0B /* SecondaryButton.swift in Sources */,
 				3EF23C8529DAC07900189F8D /* ContentView.swift in Sources */,
 				3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */,

@@ -7,10 +7,22 @@
 
 import SwiftUI
 
+enum Position {
+    case top
+    case center
+    case bottom
+}
+
 struct QuestionView: View {
+    
     var question: [String] = ["Sebuah kapal selam menyelam hingga ke kedalaman 40 meter di bawah permukaan laut.", "Kemudian, kapal selam tersebut kembali menyelam sejauh 60 meter. Maka posisi kapal selam sekarang berada pada kedalaman?"]
     @State var currentQuestion: Int = 0
     @State var value = 0.0
+    
+    @State var showSpotLight: Bool = false
+    @State var currentSpot: Int = 0
+    @State var position: Position = .top
+    
     var body: some View {
         ZStack() {
             VStack() {
@@ -20,10 +32,24 @@ struct QuestionView: View {
             ZStack {
                 VStack(spacing: 50) {
                     HStack(alignment: .top) {
-                        Image("back_button")
+                        Button {
+                            print("back")
+                        } label: {
+                            Image("back_button")
+                        }
                         Spacer()
-                        Image("help_button")
+                        Button {
+                            print("help")
+                        } label: {
+                            Image("help_button")
+                        }
+                        .addSpotlight(0, shape: .rounded, roundedRadius: 10, text: """
+For walkthrough
+""", position: .top)
+
+                            
                     }
+                    
                     ProgressView(value: Double(currentQuestion+1), total: Double(question.count))
                         .tint(Color.blue)
                         .listRowSeparator(.visible)
@@ -53,6 +79,10 @@ struct QuestionView: View {
                         }) {
                             Image(currentQuestion == question.count-1 ? "next_quest_inactive" : "next_quest_active")
                         }
+                        .addSpotlight(2, shape: .circle, roundedRadius: 30, text: """
+Next Question
+""", position: .top)
+                        
                     }
                     Spacer()
                     Spacer()
@@ -63,12 +93,15 @@ struct QuestionView: View {
                     Spacer()
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     HStack{
-                        Button(action: {
-                            print("hint")
-                        }) {
+                        Button {
+                            print("back")
+                        } label: {
                             Image("hint_button")
                         }
                         .padding(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                        .addSpotlight(1, shape: .circle, roundedRadius: 50, text: """
+Hint
+""", position: .bottom)
                         Spacer()
                     }
                     
@@ -81,6 +114,10 @@ struct QuestionView: View {
                 }
             }
         }.ignoresSafeArea()
+            .addSpotLightOverlay(show: $showSpotLight, currentSpot: $currentSpot, position: .bottom)
+            .onAppear {
+                showSpotLight = true
+            }
     }
 }
 
