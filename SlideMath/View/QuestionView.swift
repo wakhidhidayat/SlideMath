@@ -14,9 +14,10 @@ enum Position {
 }
 
 struct QuestionView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-//    var question: [String] = ["Sebuah kapal selam menyelam hingga ke kedalaman 40 meter di bawah permukaan laut.", "Kemudian, kapal selam tersebut kembali menyelam sejauh 60 meter. Maka posisi kapal selam sekarang berada pada kedalaman?"]
-    var question: [String] = ["Sebuah kapal selam berada di kedalaman 80 meter dibawah laut.", "Ternyata kondisi arus laut deras. Oleh karena itu, kapal dinaikkan 40 meter dari posisi semula.", "Tentukan dimana posisi kapal selam sekarang?"]
+    var question: Question
+    
     @State private var isNavigationActive = false
     @State var currentQuestion: Int = 0
     @State var value = 0.0
@@ -28,7 +29,6 @@ struct QuestionView: View {
     @State var hint: Hint?
     
     var body: some View {
-        NavigationStack {
             ZStack() {
                 VStack() {
                     Spacer()
@@ -40,7 +40,7 @@ struct QuestionView: View {
                     VStack(spacing: 40) {
                         HStack(alignment: .top) {
                             Button {
-                                print("back")
+                                presentationMode.wrappedValue.dismiss()
                             } label: {
                                 Image("back_button")
                             }
@@ -57,7 +57,7 @@ struct QuestionView: View {
                                 
                         }
                         
-                        ProgressView(value: Double(currentQuestion+1), total: Double(question.count))
+                        ProgressView(value: Double(currentQuestion+1), total: Double(question.texts.count))
                             .tint(Color.blue)
                             .listRowSeparator(.visible)
                             .listRowSeparatorTint(Color.blue)
@@ -67,7 +67,7 @@ struct QuestionView: View {
                             .frame(width: 300, height: 23)
                             .scaleEffect(x: 1, y: 24, anchor: .center)
                             .cornerRadius(64)
-                        Text(question[currentQuestion]).font(.title2).fontWeight(.semibold).foregroundColor(Color("green_text")).multilineTextAlignment(.center)
+                        Text(question.texts[currentQuestion]).font(.title2).fontWeight(.semibold).foregroundColor(Color("green_text")).multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
                         Spacer()
                     }
@@ -82,9 +82,9 @@ struct QuestionView: View {
                                 Image(currentQuestion == 0 ? "back_quest_inactive" : "back_quest_active")
                             }
                             Button(action: {
-                                currentQuestion = currentQuestion == question.count-1 ? currentQuestion : currentQuestion + 1
+                                currentQuestion = currentQuestion == question.texts.count-1 ? currentQuestion : currentQuestion + 1
                             }) {
-                                Image(currentQuestion == question.count-1 ? "next_quest_inactive" : "next_quest_active")
+                                Image(currentQuestion == question.texts.count-1 ? "next_quest_inactive" : "next_quest_active")
                             }
                             .addSpotlight(2, shape: .circle, roundedRadius: 30, text: """
     Next Question
@@ -105,7 +105,11 @@ struct QuestionView: View {
                             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         HStack{
                             Button {
-                                hint = .bottom
+                                if question.answer > -50 {
+                                    hint = .top
+                                } else {
+                                    hint = .bottom
+                                }
                             } label: {
                                 Image("hint_button")
                             }
@@ -115,28 +119,27 @@ struct QuestionView: View {
     """, position: .bottom)
                             Spacer()
                         }
-                        .hidden(currentQuestion != question.count - 1)
+                        .hidden(currentQuestion != question.texts.count - 1)
                         
                         
-                        PrimaryButton(title: "Submit", isDisabled: currentQuestion != question.count - 1) {
+                        PrimaryButton(title: "Submit", isDisabled: currentQuestion != question.texts.count - 1) {
                             isNavigationActive = true
-                            print("isNavigation: ", isNavigationActive)
                         }
                     }
                 }
             }.navigationDestination(isPresented: $isNavigationActive) {
-                ResultView(result: valueSlider == Double(-40) ? .correct : .incorrect).navigationBarBackButtonHidden(true)
+                ResultView(result: valueSlider == Double(question.answer) ? .correct : .incorrect).navigationBarBackButtonHidden(true)
             }
                 .addSpotLightOverlay(show: $showSpotLight, currentSpot: $currentSpot, position: .bottom)
                 .onAppear {
                     showSpotLight = true
                 }
-        }
+                .navigationBarBackButtonHidden()
     }
 }
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView()
+        QuestionView(question: QuestionViewModel().questions[0])
     }
 }

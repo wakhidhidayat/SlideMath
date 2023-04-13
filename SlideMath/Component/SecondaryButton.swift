@@ -24,8 +24,8 @@ struct SecondaryButton: View {
             Text(title)
                 .font(.system(size: 24, weight: .bold))
                 .foregroundColor(.white)
+                .frame(width: buttonWidth == .full ? UIScreen.main.bounds.width - 40 : UIScreen.main.bounds.width / 2 - 40, height: 52)
         }
-        .frame(width: buttonWidth == .full ? UIScreen.main.bounds.width - 40 : UIScreen.main.bounds.width / 2 - 40, height: 52)
         .cornerRadius(16)
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.buttonColor, lineWidth: 2))
     }}

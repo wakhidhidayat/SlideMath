@@ -19,8 +19,8 @@ struct PrimaryButton: View {
             Text(title)
                 .font(.system(size: 24, weight: .bold))
                 .foregroundColor(isDisabled ? .buttonTextDisabled : .buttonText)
+                .frame(width: UIScreen.main.bounds.width - 40, height: 52)
         }
-        .frame(width: UIScreen.main.bounds.width - 40, height: 52)
         .background(isDisabled ? Color.buttonDisabled : Color.buttonColor)
         .cornerRadius(16)
         .disabled(isDisabled)

@@ -57,7 +57,7 @@ struct ResultView: View {
                     }
                 }
             }.navigationDestination(isPresented: $isNavigationActive) {
-                MapView(currentSoal: result == .correct ? 2 : 1).navigationBarBackButtonHidden(true)
+                MapView(currentQuestion: result == .correct ? 2 : 1).navigationBarBackButtonHidden(true)
             }
         }
     }

@@ -28,26 +28,12 @@ struct MainView: View {
                     }
                     Spacer()
                         .frame(height:230)
-                    
-                    
-                    Button{
+                    PrimaryButton(title: "Mulai") {
                         isNavigate.toggle()
                     }
-                label: {
-                    Text("Mulai")
-                        .font(.system(.title) .weight(.semibold))
-                        .frame(width: 230, height: 50)
-                        .foregroundColor(.black)
-                    
-                }
-                .navigationDestination(isPresented: $isNavigate){
-                    MapView(currentSoal: 1).navigationBarBackButtonHidden(true)
-                        .navigationBarHidden(false)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.orange)
-                .buttonBorderShape(.roundedRectangle(radius: 18))
-                    
+                    .navigationDestination(isPresented: $isNavigate) {
+                        MapView(currentQuestion: 0)
+                    }
                 }
             }
         }

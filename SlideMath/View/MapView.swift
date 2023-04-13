@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MapView: View {
-    var currentSoal: Int
+    private let viewModel = QuestionViewModel()
+    var currentQuestion: Int
     @State private var isNavigationActive = false
     
     var body: some View {
-        NavigationStack {
             ZStack(alignment: .top) {
                 VStack {
                     Spacer()
@@ -42,10 +42,10 @@ struct MapView: View {
                                 Button {
                                     // TODO: Navigate to soal 2
                                 } label: {
-                                    Image(currentSoal < 2 ? "second_fish_locked" : "second_fish")
+                                    Image(currentQuestion < 1 ? "second_fish_locked" : "second_fish")
                                         .padding()
                                 }
-                                .disabled(currentSoal < 2)
+                                .disabled(currentQuestion < 1)
                             }
                             
                             HStack {
@@ -60,10 +60,10 @@ struct MapView: View {
                                 Button {
                                     // TODO: Navigate to soal 3
                                 } label: {
-                                    Image(currentSoal < 3 ? "third_fish_locked" : "third_fish")
+                                    Image(currentQuestion < 2 ? "third_fish_locked" : "third_fish")
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 50))
                                 }
-                                .disabled(currentSoal < 3)
+                                .disabled(currentQuestion < 2)
                             }
                         }
                     }
@@ -74,14 +74,14 @@ struct MapView: View {
                     Image("title_map")
                 }
             }.navigationDestination(isPresented: $isNavigationActive) {
-                QuestionView().navigationBarBackButtonHidden(true)
+                QuestionView(question: viewModel.questions[self.currentQuestion])
             }
-        }
+            .navigationBarBackButtonHidden()
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(currentSoal: 1)
+        MapView(currentQuestion: 1)
     }
 }
