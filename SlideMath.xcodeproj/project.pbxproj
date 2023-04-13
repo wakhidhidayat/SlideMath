@@ -18,6 +18,7 @@
 		3EF23C8729DAC07A00189F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8629DAC07A00189F8D /* Assets.xcassets */; };
 		3EF23C8A29DAC07A00189F8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8929DAC07A00189F8D /* Preview Assets.xcassets */; };
 		887DCCEE29E7F9D00083653A /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887DCCED29E7F9D00083653A /* CustomSlider.swift */; };
+		887DCCF029E7FBD70083653A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887DCCEF29E7FBD70083653A /* MainView.swift */; };
 		889CBB2729E2E372005039CF /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CBB2629E2E372005039CF /* QuestionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		3EF23C8629DAC07A00189F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EF23C8929DAC07A00189F8D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		887DCCED29E7F9D00083653A /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		887DCCEF29E7FBD70083653A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		889CBB2629E2E372005039CF /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 				3E2F949229DE7E9700A03B0B /* ResultView.swift */,
 				889CBB2629E2E372005039CF /* QuestionView.swift */,
 				3E2301EC29E7D235009D8B7A /* MapView.swift */,
+				887DCCEF29E7FBD70083653A /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */,
 				889CBB2729E2E372005039CF /* QuestionView.swift in Sources */,
 				3E2F949529DEA0CF00A03B0B /* PrimaryButton.swift in Sources */,
+				887DCCF029E7FBD70083653A /* MainView.swift in Sources */,
 				3E2F949329DE7E9700A03B0B /* ResultView.swift in Sources */,
 				3E2301ED29E7D235009D8B7A /* MapView.swift in Sources */,
 				3E2F949729DEA45B00A03B0B /* Color+Ext.swift in Sources */,
@@ -323,7 +327,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SlideMath/Preview Content\"";
-				DEVELOPMENT_TEAM = 94XJVN3C32;
+				DEVELOPMENT_TEAM = 9UX8BMAVFK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -353,7 +357,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SlideMath/Preview Content\"";
-				DEVELOPMENT_TEAM = 94XJVN3C32;
+				DEVELOPMENT_TEAM = 9UX8BMAVFK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

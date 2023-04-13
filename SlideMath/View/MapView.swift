@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MapView: View {
     var currentSoal: Int
+    @State private var isNavigationActive = false
     
     var body: some View {
         NavigationStack {
@@ -24,6 +25,7 @@ struct MapView: View {
                             HStack {
                                 Button {
                                     // TODO: Navigate to soal 1
+                                    isNavigationActive = true
                                 } label: {
                                     Image("first_fish")
                                         .padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 0))
@@ -71,6 +73,8 @@ struct MapView: View {
                 VStack {
                     Image("title_map")
                 }
+            }.navigationDestination(isPresented: $isNavigationActive) {
+                QuestionView().navigationBarBackButtonHidden(true)
             }
         }
     }

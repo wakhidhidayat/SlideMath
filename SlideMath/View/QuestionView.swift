@@ -15,7 +15,8 @@ enum Position {
 
 struct QuestionView: View {
     
-    var question: [String] = ["Sebuah kapal selam menyelam hingga ke kedalaman 40 meter di bawah permukaan laut.", "Kemudian, kapal selam tersebut kembali menyelam sejauh 60 meter. Maka posisi kapal selam sekarang berada pada kedalaman?"]
+//    var question: [String] = ["Sebuah kapal selam menyelam hingga ke kedalaman 40 meter di bawah permukaan laut.", "Kemudian, kapal selam tersebut kembali menyelam sejauh 60 meter. Maka posisi kapal selam sekarang berada pada kedalaman?"]
+    var question: [String] = ["Sebuah kapal selam berada di kedalaman 80 meter dibawah laut.", "Ternyata kondisi arus laut deras. Oleh karena itu, kapal dinaikkan 40 meter dari posisi semula.", "Tentukan dimana posisi kapal selam sekarang?"]
     @State private var isNavigationActive = false
     @State var currentQuestion: Int = 0
     @State var value = 0.0
@@ -31,7 +32,7 @@ struct QuestionView: View {
                 VStack() {
                     Spacer()
                     Image("background_question").resizable().scaledToFit()
-                }
+                }.ignoresSafeArea()
                 ZStack {
                     VStack(spacing: 50) {
                         HStack(alignment: .top) {
@@ -118,12 +119,11 @@ struct QuestionView: View {
 
                         Spacer()
                         Spacer()
-                    }
+                    }.ignoresSafeArea()
                 }
             }.navigationDestination(isPresented: $isNavigationActive) {
-                ResultView(result: valueSlider == Double(-90) ? .correct : .incorrect).navigationBarBackButtonHidden(true)
+                ResultView(result: valueSlider == Double(-40) ? .correct : .incorrect).navigationBarBackButtonHidden(true)
             }
-            .ignoresSafeArea()
                 .addSpotLightOverlay(show: $showSpotLight, currentSpot: $currentSpot, position: .bottom)
                 .onAppear {
                     showSpotLight = true
