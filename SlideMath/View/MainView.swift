@@ -37,7 +37,7 @@ struct MainView: View {
                     Text("Mulai")
                         .font(.system(.title) .weight(.semibold))
                         .frame(width: 230, height: 50)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                     
                 }
                 .navigationDestination(isPresented: $isNavigate){
