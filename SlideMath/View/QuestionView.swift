@@ -25,6 +25,7 @@ struct QuestionView: View {
     @State var showSpotLight: Bool = false
     @State var currentSpot: Int = 0
     @State var position: Position = .top
+    @State var hint: Hint?
     
     var body: some View {
         NavigationStack {
@@ -32,9 +33,11 @@ struct QuestionView: View {
                 VStack() {
                     Spacer()
                     Image("background_question").resizable().scaledToFit()
-                }.ignoresSafeArea()
+                }
+                .ignoresSafeArea()
+                
                 ZStack {
-                    VStack(spacing: 50) {
+                    VStack(spacing: 40) {
                         HStack(alignment: .top) {
                             Button {
                                 print("back")
@@ -88,19 +91,21 @@ struct QuestionView: View {
     """, position: .top)
                             
                         }
+                        .padding(.top, 25)
+                        Spacer()
                         Spacer()
                         Spacer()
                         Spacer()
                     }
                     
-                    CustomSlider(value: $valueSlider, range: (0, 100))
+                    CustomSlider(value: $valueSlider, range: (0, 100), hint: $hint)
 
                     VStack(spacing: 20) {
                         Spacer()
                             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         HStack{
                             Button {
-                                print("back")
+                                hint = .bottom
                             } label: {
                                 Image("hint_button")
                             }
@@ -110,16 +115,14 @@ struct QuestionView: View {
     """, position: .bottom)
                             Spacer()
                         }
+                        .hidden(currentQuestion != question.count - 1)
                         
                         
                         PrimaryButton(title: "Submit", isDisabled: currentQuestion != question.count - 1) {
                             isNavigationActive = true
                             print("isNavigation: ", isNavigationActive)
                         }
-
-                        Spacer()
-                        Spacer()
-                    }.ignoresSafeArea()
+                    }
                 }
             }.navigationDestination(isPresented: $isNavigationActive) {
                 ResultView(result: valueSlider == Double(-40) ? .correct : .incorrect).navigationBarBackButtonHidden(true)

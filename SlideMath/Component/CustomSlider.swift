@@ -7,14 +7,21 @@
 
 import SwiftUI
 
+enum Hint {
+    case top
+    case bottom
+}
+
 struct CustomSlider: View {
     @State var location: CGPoint = CGPoint(x: 50, y: 40)
     @Binding var value: Double
+    @Binding var hint: Hint?
     var range: (Double, Double)
     
-    init(value: Binding<Double>, range: (Double, Double)) {
+    init(value: Binding<Double>, range: (Double, Double), hint: Binding<Hint?>) {
         _value = value
         self.range = range
+        _hint = hint
     }
     
     struct NumberList: Identifiable {
@@ -104,29 +111,44 @@ struct CustomSlider: View {
                     Image("submarine")
                         .padding([.bottom, .trailing], 25.0)
                         .offset(x: /*@START_MENU_TOKEN@*/5.0/*@END_MENU_TOKEN@*/, y: location.y-165)
+                        .animation(.easeIn)
                 }
                 ZStack {
-                    Group {
-                        Rectangle()
-                            .frame(width: 60.0, height: 350)
-                            .cornerRadius(30.0)
-                            .foregroundColor(Color("button_disabled"))
-                        Group {
+                    ZStack(alignment: hint == .top ? .top : .bottom) {
+                        ZStack(alignment: .center) {
+                            Group {
+                                Rectangle()
+                                    .frame(width: 60.0, height: 350)
+                                    .cornerRadius(30.0)
+                                    .foregroundColor(Color("button_disabled"))
+                                Group {
+                                    Rectangle()
+                                        .frame(width: 45, height: 300)
+                                        .cornerRadius(/*@START_MENU_TOKEN@*/30.0/*@END_MENU_TOKEN@*/)
+                                        .foregroundColor(Color.white)
+                                    VStack(spacing: 10, content: {
+                                        ForEach(numberList) { list in
+                                            Text(list.no)
+                                                .font(.body)
+                                                .fontWeight(.heavy)
+                                                .foregroundColor(Color("green_text"))
+                                        }
+                                    })
+                                }.gesture(drag)
+                            }
+                            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        }
+                        
+                        // hint
+                        if let _ = hint {
                             Rectangle()
-                                .frame(width: 45, height: 300)
-                                .cornerRadius(/*@START_MENU_TOKEN@*/30.0/*@END_MENU_TOKEN@*/)
-                                .foregroundColor(Color.white)
-                            VStack(spacing: 10, content: {
-                                ForEach(numberList) { list in
-                                    Text(list.no)
-                                        .font(.body)
-                                        .fontWeight(.heavy)
-                                        .foregroundColor(Color("green_text"))
-                                }
-                            })
-                        }.gesture(drag)
+                                .frame(width: 60.0, height: 350 / 2)
+                                .foregroundColor(Color.hint)
+                                .cornerRadius(30, corners: hint == .top ? [.topLeft, .topRight] : [.bottomLeft, .bottomRight])
+                                .gesture(drag)
+                                .padding()
+                        }
                     }
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     Image("knob_slider")
                         .padding(.trailing, 75.0)
                         .offset(x: /*@START_MENU_TOKEN@*/5.0/*@END_MENU_TOKEN@*/, y: location.y-165)

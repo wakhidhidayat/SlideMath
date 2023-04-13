@@ -13,6 +13,8 @@
 		3E2F949529DEA0CF00A03B0B /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F949429DEA0CF00A03B0B /* PrimaryButton.swift */; };
 		3E2F949729DEA45B00A03B0B /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F949629DEA45B00A03B0B /* Color+Ext.swift */; };
 		3E2F949929DEB31200A03B0B /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F949829DEB31200A03B0B /* SecondaryButton.swift */; };
+		3E635A5E29E85761001989EA /* View+RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A5D29E85761001989EA /* View+RoundedCorner.swift */; };
+		3E635A6029E8578D001989EA /* View+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A5F29E8578D001989EA /* View+Hidden.swift */; };
 		3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF23C8229DAC07900189F8D /* SlideMathApp.swift */; };
 		3EF23C8529DAC07900189F8D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF23C8429DAC07900189F8D /* ContentView.swift */; };
 		3EF23C8729DAC07A00189F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8629DAC07A00189F8D /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		3E2F949429DEA0CF00A03B0B /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		3E2F949629DEA45B00A03B0B /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		3E2F949829DEB31200A03B0B /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		3E635A5D29E85761001989EA /* View+RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+RoundedCorner.swift"; sourceTree = "<group>"; };
+		3E635A5F29E8578D001989EA /* View+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Hidden.swift"; sourceTree = "<group>"; };
 		3EF23C7F29DAC07900189F8D /* SlideMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF23C8229DAC07900189F8D /* SlideMathApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMathApp.swift; sourceTree = "<group>"; };
 		3EF23C8429DAC07900189F8D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +60,16 @@
 				37B04B7929E4F4720014433B /* Spotlight.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3E635A6129E85793001989EA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3E2F949629DEA45B00A03B0B /* Color+Ext.swift */,
+				3E635A5D29E85761001989EA /* View+RoundedCorner.swift */,
+				3E635A5F29E8578D001989EA /* View+Hidden.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		3EA1681E29DEBF7200BEC247 /* View */ = {
@@ -99,13 +113,13 @@
 		3EF23C8129DAC07900189F8D /* SlideMath */ = {
 			isa = PBXGroup;
 			children = (
+				3E635A6129E85793001989EA /* Extension */,
 				37B04B7829E4F43B0014433B /* Helpers */,
 				3EF23C8229DAC07900189F8D /* SlideMathApp.swift */,
 				3EA1681F29DEBF8000BEC247 /* Component */,
 				3EA1681E29DEBF7200BEC247 /* View */,
 				3EF23C8629DAC07A00189F8D /* Assets.xcassets */,
 				3EF23C8829DAC07A00189F8D /* Preview Content */,
-				3E2F949629DEA45B00A03B0B /* Color+Ext.swift */,
 			);
 			path = SlideMath;
 			sourceTree = "<group>";
@@ -191,10 +205,12 @@
 				37B04B7A29E4F4720014433B /* Spotlight.swift in Sources */,
 				887DCCEE29E7F9D00083653A /* CustomSlider.swift in Sources */,
 				3E2F949929DEB31200A03B0B /* SecondaryButton.swift in Sources */,
+				3E635A5E29E85761001989EA /* View+RoundedCorner.swift in Sources */,
 				3EF23C8529DAC07900189F8D /* ContentView.swift in Sources */,
 				3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */,
 				889CBB2729E2E372005039CF /* QuestionView.swift in Sources */,
 				3E2F949529DEA0CF00A03B0B /* PrimaryButton.swift in Sources */,
+				3E635A6029E8578D001989EA /* View+Hidden.swift in Sources */,
 				887DCCF029E7FBD70083653A /* MainView.swift in Sources */,
 				3E2F949329DE7E9700A03B0B /* ResultView.swift in Sources */,
 				3E2301ED29E7D235009D8B7A /* MapView.swift in Sources */,

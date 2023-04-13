@@ -13,4 +13,5 @@ extension Color {
     static let buttonText = Color("button_text")
     static let buttonDisabled = Color("button_disabled")
     static let buttonTextDisabled = Color("button_text_disabled")
+    static let hint = Color("hint")
 }
