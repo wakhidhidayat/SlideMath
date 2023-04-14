@@ -36,7 +36,7 @@ struct MainView: View {
                     }
                 }
             }
-        }
+        }.preferredColorScheme(.light)
     }
 }
 
