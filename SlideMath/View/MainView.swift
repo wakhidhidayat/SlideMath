@@ -32,7 +32,7 @@ struct MainView: View {
                         isNavigate.toggle()
                     }
                     .navigationDestination(isPresented: $isNavigate) {
-                        MapView(currentQuestion: 0)
+                        MapView(questionUnlocked: 0)
                     }
                 }
             }

@@ -19,7 +19,7 @@ struct QuestionView: View {
     var question: Question
     
     @State private var isNavigationActive = false
-    @State var currentQuestion: Int = 0
+    @State var currentText: Int = 0
     @State var value = 0.0
     @State var valueSlider = 0.0
 
@@ -57,7 +57,7 @@ struct QuestionView: View {
                                 
                         }
                         
-                        ProgressView(value: Double(currentQuestion+1), total: Double(question.texts.count))
+                        ProgressView(value: Double(currentText+1), total: Double(question.texts.count))
                             .tint(Color.blue)
                             .listRowSeparator(.visible)
                             .listRowSeparatorTint(Color.blue)
@@ -67,7 +67,7 @@ struct QuestionView: View {
                             .frame(width: 300, height: 23)
                             .scaleEffect(x: 1, y: 24, anchor: .center)
                             .cornerRadius(64)
-                        Text(question.texts[currentQuestion]).font(.title2).fontWeight(.semibold).foregroundColor(Color("green_text")).multilineTextAlignment(.center)
+                        Text(question.texts[currentText]).font(.title2).fontWeight(.semibold).foregroundColor(Color("green_text")).multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
                         Spacer()
                     }
@@ -77,14 +77,14 @@ struct QuestionView: View {
                         Spacer()
                         HStack(alignment: .center, spacing: 30) {
                             Button(action: {
-                                currentQuestion = currentQuestion != 0 ? currentQuestion - 1 : currentQuestion
+                                currentText = currentText != 0 ? currentText - 1 : currentText
                             }) {
-                                Image(currentQuestion == 0 ? "back_quest_inactive" : "back_quest_active")
+                                Image(currentText == 0 ? "back_quest_inactive" : "back_quest_active")
                             }
                             Button(action: {
-                                currentQuestion = currentQuestion == question.texts.count-1 ? currentQuestion : currentQuestion + 1
+                                currentText = currentText == question.texts.count-1 ? currentText : currentText + 1
                             }) {
-                                Image(currentQuestion == question.texts.count-1 ? "next_quest_inactive" : "next_quest_active")
+                                Image(currentText == question.texts.count-1 ? "next_quest_inactive" : "next_quest_active")
                             }
                             .addSpotlight(2, shape: .circle, roundedRadius: 30, text: """
     Next Question
@@ -119,16 +119,16 @@ struct QuestionView: View {
     """, position: .bottom)
                             Spacer()
                         }
-                        .hidden(currentQuestion != question.texts.count - 1)
+                        .hidden(currentText != question.texts.count - 1)
                         
                         
-                        PrimaryButton(title: "Submit", isDisabled: currentQuestion != question.texts.count - 1) {
+                        PrimaryButton(title: "Submit", isDisabled: currentText != question.texts.count - 1) {
                             isNavigationActive = true
                         }
                     }
                 }
             }.navigationDestination(isPresented: $isNavigationActive) {
-                ResultView(result: valueSlider == Double(question.answer) ? .correct : .incorrect).navigationBarBackButtonHidden(true)
+                ResultView(currentQuestion: question.number, result: valueSlider == Double(question.answer) ? .correct : .incorrect).navigationBarBackButtonHidden(true)
             }
                 .addSpotLightOverlay(show: $showSpotLight, currentSpot: $currentSpot, position: .bottom)
                 .onAppear {

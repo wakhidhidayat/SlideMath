@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MapView: View {
     private let viewModel = QuestionViewModel()
-    var currentQuestion: Int
+    var questionUnlocked: Int
+    @State private var selectedQuestion = 0
     @State private var isNavigationActive = false
     
     var body: some View {
@@ -24,7 +25,6 @@ struct MapView: View {
                         VStack {
                             HStack {
                                 Button {
-                                    // TODO: Navigate to soal 1
                                     isNavigationActive = true
                                 } label: {
                                     Image("first_fish")
@@ -40,12 +40,13 @@ struct MapView: View {
                                 Spacer()
                                 
                                 Button {
-                                    // TODO: Navigate to soal 2
+                                    selectedQuestion = 1
+                                    isNavigationActive = true
                                 } label: {
-                                    Image(currentQuestion < 1 ? "second_fish_locked" : "second_fish")
+                                    Image(questionUnlocked < 1 ? "second_fish_locked" : "second_fish")
                                         .padding()
                                 }
-                                .disabled(currentQuestion < 1)
+                                .disabled(questionUnlocked < 1)
                             }
                             
                             HStack {
@@ -58,12 +59,13 @@ struct MapView: View {
                                 Spacer()
                                 
                                 Button {
-                                    // TODO: Navigate to soal 3
+                                    selectedQuestion = 2
+                                    isNavigationActive = true
                                 } label: {
-                                    Image(currentQuestion < 2 ? "third_fish_locked" : "third_fish")
+                                    Image(questionUnlocked < 2 ? "third_fish_locked" : "third_fish")
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 50))
                                 }
-                                .disabled(currentQuestion < 2)
+                                .disabled(questionUnlocked < 2)
                             }
                         }
                     }
@@ -74,7 +76,7 @@ struct MapView: View {
                     Image("title_map")
                 }
             }.navigationDestination(isPresented: $isNavigationActive) {
-                QuestionView(question: viewModel.questions[self.currentQuestion])
+                QuestionView(question: viewModel.questions[selectedQuestion])
             }
             .navigationBarBackButtonHidden()
     }
@@ -82,6 +84,6 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(currentQuestion: 1)
+        MapView(questionUnlocked: 1)
     }
 }

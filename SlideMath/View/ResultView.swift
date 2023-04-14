@@ -14,10 +14,11 @@ enum ResultType{
 
 struct ResultView: View {
     @State private var isNavigationActive = false
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    let currentQuestion: Int
     let result: ResultType
 
     var body: some View {
-        NavigationStack {
             ZStack(alignment: .bottom) {
                 VStack(spacing: 100) {
                     Spacer()
@@ -40,31 +41,28 @@ struct ResultView: View {
                     switch result {
                     case .correct:
                         SecondaryButton(title: "Lanjut") {
-                            // TODO: Navigate to next soal
                             isNavigationActive = true
                         }
                     case .incorrect:
-                        HStack(spacing: 30) {
-                            SecondaryButton(title: "Ulang", buttonWidth: .half) {
-                                // TODO: Back to previous soal
-                            }
-                            
-                            SecondaryButton(title: "Lanjut", buttonWidth: .half) {
-                                // TODO: Navigate to next soal
-                                isNavigationActive = true
-                            }
+                        SecondaryButton(title: "Ulang") {
+                            presentationMode.wrappedValue.dismiss()
+                            isNavigationActive = true
                         }
                     }
                 }
             }.navigationDestination(isPresented: $isNavigationActive) {
-                MapView(currentQuestion: result == .correct ? 2 : 1).navigationBarBackButtonHidden(true)
+                if currentQuestion <= 1 {
+                    MapView(questionUnlocked: result == .correct ? currentQuestion + 1 : currentQuestion)
+                } else {
+                    MapView(questionUnlocked: result == .correct ? currentQuestion : currentQuestion)
+                }
+
             }
-        }
     }
 }
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(result: .correct)
+        ResultView(currentQuestion: 0, result: .incorrect)
     }
 }
