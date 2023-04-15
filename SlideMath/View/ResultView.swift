@@ -14,7 +14,8 @@ enum ResultType{
 
 struct ResultView: View {
     @State private var isNavigationActive = false
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Binding var isQuetionViewActive: Bool
+    
     let currentQuestion: Int
     let result: ResultType
 
@@ -45,8 +46,7 @@ struct ResultView: View {
                         }
                     case .incorrect:
                         SecondaryButton(title: "Ulang") {
-                            presentationMode.wrappedValue.dismiss()
-                            isNavigationActive = true
+                            isQuetionViewActive = false
                         }
                     }
                 }
@@ -63,6 +63,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(currentQuestion: 0, result: .incorrect)
+        ResultView(isQuetionViewActive: .constant(false), currentQuestion: 0, result: .incorrect)
     }
 }
