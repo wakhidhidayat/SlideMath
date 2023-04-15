@@ -13,7 +13,7 @@ enum Hint {
 }
 
 struct CustomSlider: View {
-    @State var location: CGPoint = CGPoint(x: 50, y: 40)
+    @State private var location: CGPoint = CGPoint(x: 50, y: 40)
     @Binding var value: Double
     @Binding var hint: Hint?
     var range: (Double, Double)
