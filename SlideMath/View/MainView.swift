@@ -6,7 +6,6 @@
 import SwiftUI
 
 struct MainView: View {
-    
     @State private var isNavigate = false
     
     var body: some View {
@@ -36,7 +35,7 @@ struct MainView: View {
                     }
                 }
             }
-        }
+        }.preferredColorScheme(.light)
     }
 }
 

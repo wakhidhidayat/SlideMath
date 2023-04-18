@@ -74,6 +74,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		3EA1463E29EA56520031EF66 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E635A6229E85A3A001989EA /* Question.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3EA1463F29EA56590031EF66 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E635A6429E85AD6001989EA /* QuestionViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 		3EA1681E29DEBF7200BEC247 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,8 +114,8 @@
 		3EF23C7629DAC07900189F8D = {
 			isa = PBXGroup;
 			children = (
-				3EF23C8129DAC07900189F8D /* SlideMath */,
 				3EF23C8029DAC07900189F8D /* Products */,
+				3EF23C8129DAC07900189F8D /* SlideMath */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,8 +137,8 @@
 				3EA1681E29DEBF7200BEC247 /* View */,
 				3EF23C8629DAC07A00189F8D /* Assets.xcassets */,
 				3EF23C8829DAC07A00189F8D /* Preview Content */,
-				3E635A6229E85A3A001989EA /* Question.swift */,
-				3E635A6429E85AD6001989EA /* QuestionViewModel.swift */,
+				3EA1463E29EA56520031EF66 /* Model */,
+				3EA1463F29EA56590031EF66 /* View Model */,
 			);
 			path = SlideMath;
 			sourceTree = "<group>";
