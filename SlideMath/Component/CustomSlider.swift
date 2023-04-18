@@ -13,7 +13,7 @@ enum Hint {
 }
 
 struct CustomSlider: View {
-    @State var location: CGPoint = CGPoint(x: 50, y: 40)
+    @State var location: CGPoint = CGPoint(x: 50, y: (-6 / 100 ) * 300)
     @Binding var value: Double
     @Binding var hint: Hint?
     var range: (Double, Double)
@@ -45,50 +45,50 @@ struct CustomSlider: View {
     private func onDragChange(_ drag: DragGesture.Value,_ frame: CGRect) {
         let tapticFeedback = UINotificationFeedbackGenerator()
         var tmpLocationY = CGPoint(x: 0, y: 0)
-        
-        if (drag.location.y - 165 <= -120) {
+    
+        if (drag.location.y <= 30) {
             tmpLocationY.y = location.y
-            location.y = 40
+            location.y = (-6 / 100 ) * 300
             value = 0
-        } else if (drag.location.y - 165 <= -90) {
+        } else if (drag.location.y <= 60) {
             tmpLocationY.y = location.y
-            location.y = 70
+            location.y = (5 / 100) * 300
             value = -10
-        } else if (drag.location.y - 165 <= -60) {
+        } else if (drag.location.y <= 90) {
             tmpLocationY.y = location.y
-            location.y = 100
+            location.y = (15 / 100 ) * 300
             value = -20
-        } else if (drag.location.y - 165 <= -30) {
+        } else if (drag.location.y <= 120) {
             tmpLocationY.y = location.y
-            location.y = 125
+            location.y = (24 / 100 ) * 300
             value = -30
-        } else if (drag.location.y - 165 <= 0) {
+        } else if (drag.location.y <= 150) {
             tmpLocationY.y = location.y
-            location.y = 153
+            location.y = (34 / 100 ) * 300
             value = -40
-        } else if (drag.location.y - 165 <= 30) {
+        } else if (drag.location.y <= 180) {
             tmpLocationY.y = location.y
-            location.y = 180
+            location.y = (44 / 100 ) * 300
             value = -50
-        } else if (drag.location.y - 165 <= 60) {
+        } else if (drag.location.y <= 210) {
             tmpLocationY.y = location.y
-            location.y = 205
+            location.y = (54 / 100 ) * 300
             value = -60
-        } else if (drag.location.y - 165 <= 90) {
+        } else if (drag.location.y <= 240) {
             tmpLocationY.y = location.y
-            location.y = 235
+            location.y = (64 / 100 ) * 300
             value = -70
-        } else if (drag.location.y - 165 <= 120) {
+        } else if (drag.location.y <= 270) {
             tmpLocationY.y = location.y
-            location.y = 260
+            location.y = (74 / 100 ) * 300
             value = -80
-        } else if (drag.location.y - 165 <= 150) {
+        } else if (drag.location.y <= 300) {
             tmpLocationY.y = location.y
-            location.y = 290
+            location.y = (85 / 100 ) * 300
             value = -90
-        } else if (drag.location.y >= 310) {
+        } else if (drag.location.y >= 300) {
             tmpLocationY.y = location.y
-            location.y = 290
+            location.y = (85 / 100 ) * 300
             value = -90
         }
         if (location.y != tmpLocationY.y) {
@@ -105,20 +105,34 @@ struct CustomSlider: View {
         return VStack {
             Spacer()
             Spacer()
+            Spacer()
+            Spacer()
+            Spacer()
             HStack(alignment: .center) {
                 Spacer()
                 ZStack {
-                    Image("submarine")
-                        .padding([.bottom, .trailing], 25.0)
-                        .offset(x: /*@START_MENU_TOKEN@*/5.0/*@END_MENU_TOKEN@*/, y: location.y-165)
-                        .animation(.easeIn)
+                    VStack {
+                        Spacer()
+                        Spacer()
+                        Image("submarine")
+                            .padding([.bottom, .trailing], 25.0)
+                            .offset(x: /*@START_MENU_TOKEN@*/5.0/*@END_MENU_TOKEN@*/, y: location.y)
+                            .animation(.easeIn)
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                    }
+                    
                 }
                 ZStack {
                     ZStack(alignment: hint == .top ? .top : .bottom) {
                         ZStack(alignment: .center) {
                             Group {
                                 Rectangle()
-                                    .frame(width: 60.0, height: 350)
+                                    .frame(width: 60.0, height: 330)
                                     .cornerRadius(30.0)
                                     .foregroundColor(Color("button_disabled"))
                                 Group {
@@ -132,7 +146,7 @@ struct CustomSlider: View {
                                                 .font(.body)
                                                 .fontWeight(.heavy)
                                                 .foregroundColor(Color("green_text"))
-                                        }
+                                        }.fixedSize(horizontal: false, vertical: true)
                                     })
                                 }.gesture(drag)
                             }
@@ -149,9 +163,18 @@ struct CustomSlider: View {
                                 .padding()
                         }
                     }
-                    Image("knob_slider")
-                        .padding(.trailing, 75.0)
-                        .offset(x: /*@START_MENU_TOKEN@*/5.0/*@END_MENU_TOKEN@*/, y: location.y-165)
+                    VStack {
+                        Spacer()
+                        Spacer()
+                        Image("knob_slider")
+                            .padding(.trailing, 75.0)
+                            .offset(x: /*@START_MENU_TOKEN@*/5.0/*@END_MENU_TOKEN@*/, y: location.y)
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                    }
                 }
             }
             .padding(.top, 150)
