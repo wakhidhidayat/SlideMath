@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct MapView: View {
     private let viewModel = QuestionViewModel()
     var questionUnlocked: Int
     @State private var selectedQuestion = 0
     @State private var isNavigationActive = false
+    @State private var player = AVPlayer()
     
     var body: some View {
             ZStack(alignment: .top) {

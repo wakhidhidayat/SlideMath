@@ -64,6 +64,14 @@ struct ResultView: View {
         .sheet(isPresented: $isSheetPresent) {
             VideoView(fileName: videoFileName)
         }
+        .onAppear {
+            switch result {
+            case .correct:
+                playSound(sound: "correct", type: "mp3")
+            case .incorrect:
+                playSound(sound: "wrong", type: "mp3")
+            }
+        }
     }
 }
 

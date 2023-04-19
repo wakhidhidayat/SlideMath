@@ -35,7 +35,11 @@ struct MainView: View {
                     }
                 }
             }
-        }.preferredColorScheme(.light)
+        }
+        .onAppear {
+            playSound(sound: "play", type: "mp3")
+        }
+        .preferredColorScheme(.light)
     }
 }
 

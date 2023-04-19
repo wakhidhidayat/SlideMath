@@ -19,6 +19,10 @@
 		3E635A6529E85AD6001989EA /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A6429E85AD6001989EA /* QuestionViewModel.swift */; };
 		3ED1099829EFC08900AB8BAF /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1099729EFC08900AB8BAF /* VideoView.swift */; };
 		3ED1099A29EFC16C00AB8BAF /* answer1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3ED1099929EFC16C00AB8BAF /* answer1.mov */; };
+		3ED109B329F0490C00AB8BAF /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3ED109B029F0490C00AB8BAF /* correct.mp3 */; };
+		3ED109B429F0490C00AB8BAF /* play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3ED109B129F0490C00AB8BAF /* play.mp3 */; };
+		3ED109B529F0490C00AB8BAF /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3ED109B229F0490C00AB8BAF /* wrong.mp3 */; };
+		3ED109B829F04DCC00AB8BAF /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED109B729F04DCC00AB8BAF /* PlaySound.swift */; };
 		3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF23C8229DAC07900189F8D /* SlideMathApp.swift */; };
 		3EF23C8729DAC07A00189F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8629DAC07A00189F8D /* Assets.xcassets */; };
 		3EF23C8A29DAC07A00189F8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8929DAC07A00189F8D /* Preview Assets.xcassets */; };
@@ -40,6 +44,11 @@
 		3E635A6429E85AD6001989EA /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 		3ED1099729EFC08900AB8BAF /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		3ED1099929EFC16C00AB8BAF /* answer1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = answer1.mov; sourceTree = "<group>"; };
+		3ED109B029F0490C00AB8BAF /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		3ED109B129F0490C00AB8BAF /* play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = play.mp3; sourceTree = "<group>"; };
+		3ED109B229F0490C00AB8BAF /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
+		3ED109B629F04BB500AB8BAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3ED109B729F04DCC00AB8BAF /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
 		3EF23C7F29DAC07900189F8D /* SlideMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF23C8229DAC07900189F8D /* SlideMathApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMathApp.swift; sourceTree = "<group>"; };
 		3EF23C8629DAC07A00189F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				37B04B7929E4F4720014433B /* Spotlight.swift */,
+				3ED109B729F04DCC00AB8BAF /* PlaySound.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -135,6 +145,7 @@
 		3EF23C8129DAC07900189F8D /* SlideMath */ = {
 			isa = PBXGroup;
 			children = (
+				3ED109B629F04BB500AB8BAF /* Info.plist */,
 				3EF23C8229DAC07900189F8D /* SlideMathApp.swift */,
 				3E635A6129E85793001989EA /* Extension */,
 				37B04B7829E4F43B0014433B /* Helpers */,
@@ -142,6 +153,9 @@
 				3EA1681E29DEBF7200BEC247 /* View */,
 				3EF23C8629DAC07A00189F8D /* Assets.xcassets */,
 				3ED1099929EFC16C00AB8BAF /* answer1.mov */,
+				3ED109B029F0490C00AB8BAF /* correct.mp3 */,
+				3ED109B129F0490C00AB8BAF /* play.mp3 */,
+				3ED109B229F0490C00AB8BAF /* wrong.mp3 */,
 				3EF23C8829DAC07A00189F8D /* Preview Content */,
 				3EA1463E29EA56520031EF66 /* Model */,
 				3EA1463F29EA56590031EF66 /* View Model */,
@@ -216,8 +230,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ED1099A29EFC16C00AB8BAF /* answer1.mov in Resources */,
+				3ED109B429F0490C00AB8BAF /* play.mp3 in Resources */,
 				3EF23C8A29DAC07A00189F8D /* Preview Assets.xcassets in Resources */,
 				3EF23C8729DAC07A00189F8D /* Assets.xcassets in Resources */,
+				3ED109B529F0490C00AB8BAF /* wrong.mp3 in Resources */,
+				3ED109B329F0490C00AB8BAF /* correct.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +254,7 @@
 				3ED1099829EFC08900AB8BAF /* VideoView.swift in Sources */,
 				3E2F949529DEA0CF00A03B0B /* PrimaryButton.swift in Sources */,
 				3E635A6029E8578D001989EA /* View+Hidden.swift in Sources */,
+				3ED109B829F04DCC00AB8BAF /* PlaySound.swift in Sources */,
 				3E635A6529E85AD6001989EA /* QuestionViewModel.swift in Sources */,
 				3E635A6329E85A3A001989EA /* Question.swift in Sources */,
 				887DCCF029E7FBD70083653A /* MainView.swift in Sources */,
@@ -371,9 +389,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SlideMath/Preview Content\"";
-				DEVELOPMENT_TEAM = 9UX8BMAVFK;
+				DEVELOPMENT_TEAM = 94XJVN3C32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SlideMath/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -401,9 +420,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SlideMath/Preview Content\"";
-				DEVELOPMENT_TEAM = 9UX8BMAVFK;
+				DEVELOPMENT_TEAM = 94XJVN3C32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SlideMath/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
