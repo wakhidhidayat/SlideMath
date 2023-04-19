@@ -14,10 +14,12 @@ enum ResultType{
 
 struct ResultView: View {
     @State private var isNavigationActive = false
+    @State private var isSheetPresent = false
     @Binding var isQuetionViewActive: Bool
     
     let currentQuestion: Int
     let result: ResultType
+    let videoFileName: String?
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -36,7 +38,7 @@ struct ResultView: View {
             
             VStack(spacing: 24) {
                 PrimaryButton(title: "Lihat penjelasan, yuk!") {
-                    // TODO: Show penjelasan
+                    isSheetPresent = true
                 }
                 
                 switch result {
@@ -59,11 +61,14 @@ struct ResultView: View {
             }
             
         }
+        .sheet(isPresented: $isSheetPresent) {
+            VideoView(fileName: videoFileName)
+        }
     }
 }
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(isQuetionViewActive: .constant(false), currentQuestion: 0, result: .incorrect)
+        ResultView(isQuetionViewActive: .constant(false), currentQuestion: 0, result: .incorrect, videoFileName: "answer1")
     }
 }

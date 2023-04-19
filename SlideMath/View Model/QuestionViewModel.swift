@@ -16,7 +16,8 @@ class QuestionViewModel {
                 "Kemudian, ia kembali turun sejauh 60 meter.",
                 "Maka posisi kapal selam sekarang berada pada kedalaman?"
             ],
-            answer: -90),
+            answer: -90,
+            videoFileName: "answer1"),
         Question(
             number: 1,
             texts: [
@@ -24,7 +25,8 @@ class QuestionViewModel {
                 "Ternyata kondisi arus laut deras. Oleh karena itu, kapal dinaikkan 40 meter dari posisi semula.",
                 "Dimana posisi kapal selam sekarang?"
             ],
-            answer: -40),
+            answer: -40,
+            videoFileName: nil),
         Question(
             number: 2,
             texts: [
@@ -32,6 +34,7 @@ class QuestionViewModel {
                 "Kemudian ia naik 70 meter untuk melakukan penelitian ikan paus.",
                 "Dimana posisi kapal selam saat ini?"
             ],
-            answer: -20)
+            answer: -20,
+            videoFileName: nil),
     ]
 }

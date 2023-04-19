@@ -11,4 +11,5 @@ struct Question {
     let number: Int
     let texts: [String]
     let answer: Int
+    let videoFileName: String?
 }

@@ -128,7 +128,7 @@ struct QuestionView: View {
                 }
             }
         }.navigationDestination(isPresented: $isNavigationActive) {
-            ResultView(isQuetionViewActive: $isNavigationActive, currentQuestion: question.number, result: valueSlider == Double(question.answer) ? .correct : .incorrect).navigationBarBackButtonHidden(true)
+            ResultView(isQuetionViewActive: $isNavigationActive, currentQuestion: question.number, result: valueSlider == Double(question.answer) ? .correct : .incorrect, videoFileName: question.videoFileName).navigationBarBackButtonHidden(true)
         }
         .addSpotLightOverlay(show: $showSpotLight, currentSpot: $currentSpot, position: .bottom)
         .onAppear {
