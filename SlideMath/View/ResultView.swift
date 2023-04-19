@@ -71,6 +71,9 @@ struct ResultView: View {
             case .incorrect:
                 playSound(sound: "wrong", type: "mp3")
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                playSound(sound: "play", type: "mp3")
+            }
         }
     }
 }
