@@ -28,6 +28,8 @@ struct QuestionView: View {
     @State private var position: Position = .top
     @State private var hint: Hint?
     
+    @AppStorage("spotlightShown") var spotlightShown: Bool = false
+    
     var body: some View {
         ZStack() {
             VStack() {
@@ -132,7 +134,10 @@ struct QuestionView: View {
         }
         .addSpotLightOverlay(show: $showSpotLight, currentSpot: $currentSpot, position: .bottom)
         .onAppear {
-            showSpotLight = true
+            if !spotlightShown {
+                showSpotLight = true
+                spotlightShown = true
+            }
         }
         .navigationBarBackButtonHidden()
     }
