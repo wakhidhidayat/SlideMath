@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ResultType{
+enum ResultType {
     case correct
     case incorrect
 }
@@ -80,6 +80,11 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(isQuetionViewActive: .constant(false), currentQuestion: 0, result: .incorrect, videoFileName: "answer1")
+        ResultView(
+            isQuetionViewActive: .constant(false),
+            currentQuestion: 0,
+            result: .incorrect,
+            videoFileName: "answer1"
+        )
     }
 }

@@ -17,6 +17,7 @@
 		3E635A6029E8578D001989EA /* View+Hidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A5F29E8578D001989EA /* View+Hidden.swift */; };
 		3E635A6329E85A3A001989EA /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A6229E85A3A001989EA /* Question.swift */; };
 		3E635A6529E85AD6001989EA /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A6429E85AD6001989EA /* QuestionViewModel.swift */; };
+		3EBD51382A8DB9C000DBF948 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3EBD51372A8DB9C000DBF948 /* .swiftlint.yml */; };
 		3ED1099829EFC08900AB8BAF /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1099729EFC08900AB8BAF /* VideoView.swift */; };
 		3ED1099A29EFC16C00AB8BAF /* answer1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3ED1099929EFC16C00AB8BAF /* answer1.mov */; };
 		3ED109B329F0490C00AB8BAF /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3ED109B029F0490C00AB8BAF /* correct.mp3 */; };
@@ -42,6 +43,7 @@
 		3E635A5F29E8578D001989EA /* View+Hidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Hidden.swift"; sourceTree = "<group>"; };
 		3E635A6229E85A3A001989EA /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		3E635A6429E85AD6001989EA /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
+		3EBD51372A8DB9C000DBF948 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		3ED1099729EFC08900AB8BAF /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		3ED1099929EFC16C00AB8BAF /* answer1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = answer1.mov; sourceTree = "<group>"; };
 		3ED109B029F0490C00AB8BAF /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		3EF23C7629DAC07900189F8D = {
 			isa = PBXGroup;
 			children = (
+				3EBD51372A8DB9C000DBF948 /* .swiftlint.yml */,
 				3EF23C8029DAC07900189F8D /* Products */,
 				3EF23C8129DAC07900189F8D /* SlideMath */,
 			);
@@ -181,6 +184,7 @@
 				3EF23C7B29DAC07900189F8D /* Sources */,
 				3EF23C7C29DAC07900189F8D /* Frameworks */,
 				3EF23C7D29DAC07900189F8D /* Resources */,
+				3EBD51362A8DB7FE00DBF948 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -232,6 +236,7 @@
 				3ED1099A29EFC16C00AB8BAF /* answer1.mov in Resources */,
 				3ED109B429F0490C00AB8BAF /* play.mp3 in Resources */,
 				3EF23C8A29DAC07A00189F8D /* Preview Assets.xcassets in Resources */,
+				3EBD51382A8DB9C000DBF948 /* .swiftlint.yml in Resources */,
 				3EF23C8729DAC07A00189F8D /* Assets.xcassets in Resources */,
 				3ED109B529F0490C00AB8BAF /* wrong.mp3 in Resources */,
 				3ED109B329F0490C00AB8BAF /* correct.mp3 in Resources */,
@@ -239,6 +244,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3EBD51362A8DB7FE00DBF948 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3EF23C7B29DAC07900189F8D /* Sources */ = {
@@ -389,7 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SlideMath/Preview Content\"";
-				DEVELOPMENT_TEAM = S3Z84JBVGM;
+				DEVELOPMENT_TEAM = 94XJVN3C32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SlideMath/Info.plist;
@@ -420,7 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SlideMath/Preview Content\"";
-				DEVELOPMENT_TEAM = S3Z84JBVGM;
+				DEVELOPMENT_TEAM = 94XJVN3C32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SlideMath/Info.plist;

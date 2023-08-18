@@ -1,0 +1,6 @@
+disabled_rules:
+    - multiple_closures_with_trailing_closure
+    - trailing_whitespace
+    - function_parameter_count
+    - function_body_length
+    - cyclomatic_complexity

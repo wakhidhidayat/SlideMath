@@ -35,6 +35,6 @@ class QuestionViewModel {
                 "Dimana posisi kapal selam saat ini?"
             ],
             answer: -20,
-            videoFileName: nil),
+            videoFileName: nil)
     ]
 }

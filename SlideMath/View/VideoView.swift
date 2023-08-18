@@ -18,7 +18,9 @@ struct VideoView: View {
                 .foregroundColor(Color("blue_text"))
                 .padding()
             
-            VideoPlayer(player: AVPlayer(url:  Bundle.main.url(forResource: fileName ?? "answer1", withExtension: "mov")!))
+            VideoPlayer(
+                player: AVPlayer(url: Bundle.main.url(forResource: fileName ?? "answer1", withExtension: "mov")!)
+            )
                 .frame(height: UIScreen.main.bounds.height * 65 / 100)
                 .cornerRadius(24, corners: .allCorners)
         }

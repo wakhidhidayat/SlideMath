@@ -31,8 +31,8 @@ struct QuestionView: View {
     @AppStorage("spotlightShown") var spotlightShown: Bool = false
     
     var body: some View {
-        ZStack() {
-            VStack() {
+        ZStack {
+            VStack {
                 Spacer()
                 Image("background_question").resizable().scaledToFit()
             }
@@ -55,8 +55,6 @@ struct QuestionView: View {
                         .addSpotlight(0, shape: .rounded, roundedRadius: 10, text: """
     For walkthrough
     """, position: .top)
-                        
-                        
                     }
                     
                     ProgressView(value: Double(currentText+1), total: Double(question.texts.count))
@@ -69,7 +67,11 @@ struct QuestionView: View {
                         .frame(width: 300, height: 23)
                         .scaleEffect(x: 1, y: 24, anchor: .center)
                         .cornerRadius(64)
-                    Text(question.texts[currentText]).font(.title2).fontWeight(.semibold).foregroundColor(Color("green_text")).multilineTextAlignment(.center)
+                    Text(question.texts[currentText])
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color("green_text"))
+                        .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     Spacer()
                 }
@@ -105,7 +107,7 @@ struct QuestionView: View {
                 VStack(spacing: 20) {
                     Spacer()
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    HStack{
+                    HStack {
                         Button {
                             if question.answer > -50 {
                                 hint = .top
@@ -122,15 +124,20 @@ struct QuestionView: View {
                         Spacer()
                     }
                     .hidden(currentText != question.texts.count - 1)
-                    
-                    
+                     
                     PrimaryButton(title: "Submit", isDisabled: currentText != question.texts.count - 1) {
                         isNavigationActive = true
                     }
                 }
             }
         }.navigationDestination(isPresented: $isNavigationActive) {
-            ResultView(isQuetionViewActive: $isNavigationActive, currentQuestion: question.number, result: valueSlider == Double(question.answer) ? .correct : .incorrect, videoFileName: question.videoFileName).navigationBarBackButtonHidden(true)
+            ResultView(
+                isQuetionViewActive: $isNavigationActive,
+                currentQuestion: question.number,
+                result: valueSlider == Double(question.answer) ? .correct : .incorrect,
+                videoFileName: question.videoFileName
+            )
+            .navigationBarBackButtonHidden(true)
         }
         .addSpotLightOverlay(show: $showSpotLight, currentSpot: $currentSpot, position: .bottom)
         .onAppear {

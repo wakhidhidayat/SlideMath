@@ -10,11 +10,12 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack{ Color(.white).edgesIgnoringSafeArea(.all)
+            ZStack {
+                Color(.white).edgesIgnoringSafeArea(.all)
                 VStack {
                     Spacer()
                         .frame(height: 120)
-                    VStack(spacing: 15){
+                    VStack(spacing: 15) {
                         Image("logo")
                             .resizable(capInsets: EdgeInsets())
                             .frame(width: 300, height: 225)
@@ -22,11 +23,11 @@ struct MainView: View {
                             .fontWeight(.light)
                             .font(.title2)
                             .multilineTextAlignment(.center)
-                            .padding(.horizontal,35)
+                            .padding(.horizontal, 35)
                         
                     }
                     Spacer()
-                        .frame(height:230)
+                        .frame(height: 230)
                     PrimaryButton(title: "Mulai") {
                         isNavigate.toggle()
                     }
