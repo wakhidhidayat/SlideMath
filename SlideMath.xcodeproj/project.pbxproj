@@ -24,6 +24,10 @@
 		3ED109B429F0490C00AB8BAF /* play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3ED109B129F0490C00AB8BAF /* play.mp3 */; };
 		3ED109B529F0490C00AB8BAF /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3ED109B229F0490C00AB8BAF /* wrong.mp3 */; };
 		3ED109B829F04DCC00AB8BAF /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED109B729F04DCC00AB8BAF /* PlaySound.swift */; };
+		3EE3F6FD2A91C9B3000325C8 /* QuestionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3F6FC2A91C9B3000325C8 /* QuestionDataSource.swift */; };
+		3EE3F7002A925E3E000325C8 /* QuestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3F6FF2A925E3E000325C8 /* QuestionRepository.swift */; };
+		3EE3F7032A9260E3000325C8 /* QuestionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3F7022A9260E3000325C8 /* QuestionUseCase.swift */; };
+		3EE3F7062A92634B000325C8 /* QuestionInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3F7052A92634B000325C8 /* QuestionInjection.swift */; };
 		3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF23C8229DAC07900189F8D /* SlideMathApp.swift */; };
 		3EF23C8729DAC07A00189F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8629DAC07A00189F8D /* Assets.xcassets */; };
 		3EF23C8A29DAC07A00189F8D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF23C8929DAC07A00189F8D /* Preview Assets.xcassets */; };
@@ -51,6 +55,10 @@
 		3ED109B229F0490C00AB8BAF /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
 		3ED109B629F04BB500AB8BAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3ED109B729F04DCC00AB8BAF /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		3EE3F6FC2A91C9B3000325C8 /* QuestionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDataSource.swift; sourceTree = "<group>"; };
+		3EE3F6FF2A925E3E000325C8 /* QuestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepository.swift; sourceTree = "<group>"; };
+		3EE3F7022A9260E3000325C8 /* QuestionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionUseCase.swift; sourceTree = "<group>"; };
+		3EE3F7052A92634B000325C8 /* QuestionInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionInjection.swift; sourceTree = "<group>"; };
 		3EF23C7F29DAC07900189F8D /* SlideMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF23C8229DAC07900189F8D /* SlideMathApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMathApp.swift; sourceTree = "<group>"; };
 		3EF23C8629DAC07A00189F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,7 +109,6 @@
 		3EA1463F29EA56590031EF66 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				3E635A6429E85AD6001989EA /* QuestionViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -110,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				3E2F949229DE7E9700A03B0B /* ResultView.swift */,
-				889CBB2629E2E372005039CF /* QuestionView.swift */,
 				3E2301EC29E7D235009D8B7A /* MapView.swift */,
 				887DCCEF29E7FBD70083653A /* MainView.swift */,
 				3ED1099729EFC08900AB8BAF /* VideoView.swift */,
@@ -126,6 +132,129 @@
 				887DCCED29E7F9D00083653A /* CustomSlider.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		3EE3F6F32A91A9A7000325C8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F7042A926345000325C8 /* DI */,
+				3EE3F6FA2A91C21A000325C8 /* Data */,
+				3EE3F6F82A91BA53000325C8 /* Domain */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3EE3F6F42A91A9AC000325C8 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F7072A9263E9000325C8 /* Question */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		3EE3F6F52A91A9E5000325C8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3EF23C8229DAC07900189F8D /* SlideMathApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		3EE3F6F62A91A9F0000325C8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EF23C8629DAC07A00189F8D /* Assets.xcassets */,
+				3ED1099929EFC16C00AB8BAF /* answer1.mov */,
+				3ED109B029F0490C00AB8BAF /* correct.mp3 */,
+				3ED109B129F0490C00AB8BAF /* play.mp3 */,
+				3ED109B229F0490C00AB8BAF /* wrong.mp3 */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3EE3F6F72A91A9F7000325C8 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3EA1681F29DEBF8000BEC247 /* Component */,
+				37B04B7829E4F43B0014433B /* Helpers */,
+				3E635A6129E85793001989EA /* Extension */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		3EE3F6F82A91BA53000325C8 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F7012A9260CC000325C8 /* Use Case */,
+				3EA1463E29EA56520031EF66 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		3EE3F6FA2A91C21A000325C8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F6FE2A925E2E000325C8 /* Repository */,
+				3EE3F6FB2A91C221000325C8 /* Locale */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3EE3F6FB2A91C221000325C8 /* Locale */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F6FC2A91C9B3000325C8 /* QuestionDataSource.swift */,
+			);
+			path = Locale;
+			sourceTree = "<group>";
+		};
+		3EE3F6FE2A925E2E000325C8 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F6FF2A925E3E000325C8 /* QuestionRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		3EE3F7012A9260CC000325C8 /* Use Case */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F7022A9260E3000325C8 /* QuestionUseCase.swift */,
+			);
+			path = "Use Case";
+			sourceTree = "<group>";
+		};
+		3EE3F7042A926345000325C8 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F7052A92634B000325C8 /* QuestionInjection.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		3EE3F7072A9263E9000325C8 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F7092A9263FA000325C8 /* View Model */,
+				3EE3F7082A9263F6000325C8 /* View */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		3EE3F7082A9263F6000325C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				889CBB2629E2E372005039CF /* QuestionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3EE3F7092A9263FA000325C8 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E635A6429E85AD6001989EA /* QuestionViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		3EF23C7629DAC07900189F8D = {
@@ -148,19 +277,14 @@
 		3EF23C8129DAC07900189F8D /* SlideMath */ = {
 			isa = PBXGroup;
 			children = (
+				3EE3F6F72A91A9F7000325C8 /* Utility */,
+				3EE3F6F62A91A9F0000325C8 /* Supporting Files */,
+				3EE3F6F52A91A9E5000325C8 /* App */,
+				3EE3F6F42A91A9AC000325C8 /* Module */,
+				3EE3F6F32A91A9A7000325C8 /* Core */,
 				3ED109B629F04BB500AB8BAF /* Info.plist */,
-				3EF23C8229DAC07900189F8D /* SlideMathApp.swift */,
-				3E635A6129E85793001989EA /* Extension */,
-				37B04B7829E4F43B0014433B /* Helpers */,
-				3EA1681F29DEBF8000BEC247 /* Component */,
 				3EA1681E29DEBF7200BEC247 /* View */,
-				3EF23C8629DAC07A00189F8D /* Assets.xcassets */,
-				3ED1099929EFC16C00AB8BAF /* answer1.mov */,
-				3ED109B029F0490C00AB8BAF /* correct.mp3 */,
-				3ED109B129F0490C00AB8BAF /* play.mp3 */,
-				3ED109B229F0490C00AB8BAF /* wrong.mp3 */,
 				3EF23C8829DAC07A00189F8D /* Preview Content */,
-				3EA1463E29EA56520031EF66 /* Model */,
 				3EA1463F29EA56590031EF66 /* View Model */,
 			);
 			path = SlideMath;
@@ -275,11 +399,15 @@
 				3E2F949929DEB31200A03B0B /* SecondaryButton.swift in Sources */,
 				3E635A5E29E85761001989EA /* View+RoundedCorner.swift in Sources */,
 				3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */,
+				3EE3F7032A9260E3000325C8 /* QuestionUseCase.swift in Sources */,
 				889CBB2729E2E372005039CF /* QuestionView.swift in Sources */,
 				3ED1099829EFC08900AB8BAF /* VideoView.swift in Sources */,
+				3EE3F7002A925E3E000325C8 /* QuestionRepository.swift in Sources */,
 				3E2F949529DEA0CF00A03B0B /* PrimaryButton.swift in Sources */,
 				3E635A6029E8578D001989EA /* View+Hidden.swift in Sources */,
+				3EE3F6FD2A91C9B3000325C8 /* QuestionDataSource.swift in Sources */,
 				3ED109B829F04DCC00AB8BAF /* PlaySound.swift in Sources */,
+				3EE3F7062A92634B000325C8 /* QuestionInjection.swift in Sources */,
 				3E635A6529E85AD6001989EA /* QuestionViewModel.swift in Sources */,
 				3E635A6329E85A3A001989EA /* Question.swift in Sources */,
 				887DCCF029E7FBD70083653A /* MainView.swift in Sources */,

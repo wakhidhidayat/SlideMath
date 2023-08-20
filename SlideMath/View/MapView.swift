@@ -9,11 +9,10 @@ import SwiftUI
 import AVFoundation
 
 struct MapView: View {
-    private let viewModel = QuestionViewModel()
+    @StateObject private var viewModel = QuestionViewModel()
     var questionUnlocked: Int
     @State private var selectedQuestion = 0
     @State private var isNavigationActive = false
-    @State private var player = AVPlayer()
     
     var body: some View {
             ZStack(alignment: .top) {
@@ -77,8 +76,14 @@ struct MapView: View {
                 VStack {
                     Image("title_map")
                 }
-            }.navigationDestination(isPresented: $isNavigationActive) {
-                QuestionView(question: viewModel.questions[selectedQuestion])
+            }
+            .onAppear {
+                viewModel.getQuestions()
+            }
+            .navigationDestination(isPresented: $isNavigationActive) {
+                if !viewModel.questions.isEmpty {
+                    QuestionView(question: viewModel.questions[selectedQuestion])
+                }
             }
             .navigationBarBackButtonHidden()
     }
