@@ -15,20 +15,7 @@ enum Position {
 
 struct QuestionView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    var question: Question
-    
-    @State private var isNavigationActive = false
-    @State private var currentText: Int = 0
-    @State private var value = 0.0
-    @State private var valueSlider = 0.0
-    
-    @State private var showSpotLight: Bool = false
-    @State private var currentSpot: Int = 0
-    @State private var position: Position = .top
-    @State private var hint: Hint?
-    
-    @AppStorage("spotlightShown") var spotlightShown: Bool = false
+    @ObservedObject var viewModel: QuestionViewModel
     
     var body: some View {
         ZStack {
@@ -57,7 +44,10 @@ struct QuestionView: View {
     """, position: .top)
                     }
                     
-                    ProgressView(value: Double(currentText+1), total: Double(question.texts.count))
+                    ProgressView(
+                        value: Double(viewModel.currentText + 1),
+                        total: viewModel.questions.isEmpty ? 0 : Double(viewModel.questions[viewModel.selectedQuestion].texts.count)
+                    )
                         .tint(Color.blue)
                         .listRowSeparator(.visible)
                         .listRowSeparatorTint(Color.blue)
@@ -67,7 +57,7 @@ struct QuestionView: View {
                         .frame(width: 300, height: 23)
                         .scaleEffect(x: 1, y: 24, anchor: .center)
                         .cornerRadius(64)
-                    Text(question.texts[currentText])
+                    Text(viewModel.questions.isEmpty ? "" : viewModel.questions[viewModel.selectedQuestion].texts[viewModel.currentText])
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(Color("green_text"))
@@ -81,14 +71,16 @@ struct QuestionView: View {
                     Spacer()
                     HStack(alignment: .center, spacing: 30) {
                         Button(action: {
-                            currentText = currentText != 0 ? currentText - 1 : currentText
+                            viewModel.currentText = viewModel.currentText != 0 ? viewModel.currentText - 1 : viewModel.currentText
                         }) {
-                            Image(currentText == 0 ? "back_quest_inactive" : "back_quest_active")
+                            Image(viewModel.currentText == 0 ? "back_quest_inactive" : "back_quest_active")
                         }
                         Button(action: {
-                            currentText = currentText == question.texts.count-1 ? currentText : currentText + 1
+                            viewModel.currentText = viewModel.currentText == viewModel.questions[viewModel.selectedQuestion].texts.count-1 ? viewModel.currentText : viewModel.currentText + 1
                         }) {
-                            Image(currentText == question.texts.count-1 ? "next_quest_inactive" : "next_quest_active")
+                            if viewModel.questions.isEmpty == false {
+                                Image(viewModel.currentText == viewModel.questions[viewModel.selectedQuestion].texts.count-1 ? "next_quest_inactive" : "next_quest_active")
+                            }
                         }
                         .addSpotlight(2, shape: .circle, roundedRadius: 30, text: """
     Next Question
@@ -102,17 +94,17 @@ struct QuestionView: View {
                     Spacer()
                 }
                 
-                CustomSlider(value: $valueSlider, range: (0, 100), hint: $hint)
+                CustomSlider(value: $viewModel.valueSlider, range: (0, 100), hint: $viewModel.hint)
                 
                 VStack(spacing: 20) {
                     Spacer()
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     HStack {
                         Button {
-                            if question.answer > -50 {
-                                hint = .top
+                            if viewModel.questions[viewModel.selectedQuestion].answer > -50 {
+                                viewModel.hint = .top
                             } else {
-                                hint = .bottom
+                                viewModel.hint = .bottom
                             }
                         } label: {
                             Image("hint_button")
@@ -123,27 +115,35 @@ struct QuestionView: View {
     """, position: .bottom)
                         Spacer()
                     }
-                    .hidden(currentText != question.texts.count - 1)
-                     
-                    PrimaryButton(title: "Submit", isDisabled: currentText != question.texts.count - 1) {
-                        isNavigationActive = true
+                    .hidden(viewModel.questions.isEmpty ? false : viewModel.currentText != viewModel.questions[viewModel.selectedQuestion].texts.count - 1)
+                    
+                    PrimaryButton(
+                        title: "Submit",
+                        isDisabled: viewModel.questions.isEmpty ? false : viewModel.currentText != viewModel.questions[viewModel.selectedQuestion].texts.count - 1
+                    ) {
+                        viewModel.isNavigationActive = true
                     }
                 }
             }
-        }.navigationDestination(isPresented: $isNavigationActive) {
-            ResultView(
-                isQuetionViewActive: $isNavigationActive,
-                currentQuestion: question.number,
-                result: valueSlider == Double(question.answer) ? .correct : .incorrect,
-                videoFileName: question.videoFileName
-            )
-            .navigationBarBackButtonHidden(true)
+        }.navigationDestination(isPresented: $viewModel.isNavigationActive) {
+            if viewModel.questions.isEmpty == false {
+                ResultView(
+                    isQuestionViewActive: $viewModel.isNavigationActive,
+                    viewModel: ResultViewModel(
+                        currentQuestion: viewModel.questions[viewModel.selectedQuestion].number,
+                        result: viewModel.valueSlider == Double(viewModel.questions[viewModel.selectedQuestion].answer) ? .correct : .incorrect,
+                        videoFileName: viewModel.questions[viewModel.selectedQuestion].videoFileName
+                    )
+                )
+                .navigationBarBackButtonHidden(true)
+            }
         }
-        .addSpotLightOverlay(show: $showSpotLight, currentSpot: $currentSpot, position: .bottom)
+        .addSpotLightOverlay(show: $viewModel.showSpotLight, currentSpot: $viewModel.currentSpot, position: .bottom)
         .onAppear {
-            if !spotlightShown {
-                showSpotLight = true
-                spotlightShown = true
+            viewModel.getQuestions()
+            if !viewModel.spotlightShown {
+                viewModel.showSpotLight = true
+                viewModel.spotlightShown = true
             }
         }
         .navigationBarBackButtonHidden()
@@ -152,6 +152,6 @@ struct QuestionView: View {
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView(question: QuestionViewModel().questions[0])
+        QuestionView(viewModel: QuestionViewModel(selectedQuestion: 0))
     }
 }

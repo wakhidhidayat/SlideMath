@@ -21,8 +21,8 @@ struct VideoView: View {
             VideoPlayer(
                 player: AVPlayer(url: Bundle.main.url(forResource: fileName ?? "answer1", withExtension: "mov")!)
             )
-                .frame(height: UIScreen.main.bounds.height * 65 / 100)
-                .cornerRadius(24, corners: .allCorners)
+            .frame(height: UIScreen.main.bounds.height * 65 / 100)
+            .cornerRadius(24, corners: .allCorners)
         }
         .padding()
     }

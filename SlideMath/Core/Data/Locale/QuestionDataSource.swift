@@ -17,7 +17,7 @@ class QuestionDataSourceImpl: QuestionDataSource {
     static let shared = QuestionDataSourceImpl()
     
     func getQuestions() -> [Question] {
-        var questions = [
+        let questions = [
             Question(
                 number: 0,
                 texts: [

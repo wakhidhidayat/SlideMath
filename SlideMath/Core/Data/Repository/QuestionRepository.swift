@@ -13,8 +13,8 @@ protocol QuestionRepository {
 
 class QuestionRepositoryImpl: QuestionRepository {
     private var questionDataSource: QuestionDataSource
-    static let shared: (QuestionDataSource) -> QuestionRepository = { ds in
-        return QuestionRepositoryImpl(questionDataSource: ds)
+    static let shared: (QuestionDataSource) -> QuestionRepository = { dataSource in
+        return QuestionRepositoryImpl(questionDataSource: dataSource)
     }
     
     private init(questionDataSource: QuestionDataSource) {

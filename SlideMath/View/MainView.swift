@@ -32,13 +32,13 @@ struct MainView: View {
                         isNavigate.toggle()
                     }
                     .navigationDestination(isPresented: $isNavigate) {
-                        MapView(questionUnlocked: 0)
+                        MapView(viewModel: MapViewModel(questionUnlocked: 0))
                     }
                 }
             }
         }
         .onAppear {
-            playSound(sound: "play", type: "mp3")
+            AudioManager.shared.playSound(sound: "play", type: "mp3")
         }
         .preferredColorScheme(.light)
     }
