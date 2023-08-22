@@ -1,5 +1,5 @@
 //
-//  VideoView.swift
+//  ExplanationView.swift
 //  SlideMath
 //
 //  Created by Wahid Hidayat on 19/04/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import AVKit
 
-struct VideoView: View {
+struct ExplanationView: View {
     var fileName: String?
     
     var body: some View {
@@ -28,8 +28,8 @@ struct VideoView: View {
     }
 }
 
-struct VideoView_Previews: PreviewProvider {
+struct ExplanationView_Previews: PreviewProvider {
     static var previews: some View {
-        VideoView(fileName: "answer1")
+        ExplanationView(fileName: "answer1")
     }
 }

@@ -18,7 +18,7 @@
 		3E635A6329E85A3A001989EA /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A6229E85A3A001989EA /* Question.swift */; };
 		3E635A6529E85AD6001989EA /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A6429E85AD6001989EA /* QuestionViewModel.swift */; };
 		3EBD51382A8DB9C000DBF948 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3EBD51372A8DB9C000DBF948 /* .swiftlint.yml */; };
-		3ED1099829EFC08900AB8BAF /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1099729EFC08900AB8BAF /* VideoView.swift */; };
+		3ED1099829EFC08900AB8BAF /* ExplanationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED1099729EFC08900AB8BAF /* ExplanationView.swift */; };
 		3ED1099A29EFC16C00AB8BAF /* answer1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 3ED1099929EFC16C00AB8BAF /* answer1.mov */; };
 		3ED109B329F0490C00AB8BAF /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3ED109B029F0490C00AB8BAF /* correct.mp3 */; };
 		3ED109B429F0490C00AB8BAF /* play.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3ED109B129F0490C00AB8BAF /* play.mp3 */; };
@@ -50,7 +50,7 @@
 		3E635A6229E85A3A001989EA /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		3E635A6429E85AD6001989EA /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 		3EBD51372A8DB9C000DBF948 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		3ED1099729EFC08900AB8BAF /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		3ED1099729EFC08900AB8BAF /* ExplanationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanationView.swift; sourceTree = "<group>"; };
 		3ED1099929EFC16C00AB8BAF /* answer1.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = answer1.mov; sourceTree = "<group>"; };
 		3ED109B029F0490C00AB8BAF /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
 		3ED109B129F0490C00AB8BAF /* play.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = play.mp3; sourceTree = "<group>"; };
@@ -114,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				887DCCEF29E7FBD70083653A /* MainView.swift */,
-				3ED1099729EFC08900AB8BAF /* VideoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +141,7 @@
 		3EE3F6F42A91A9AC000325C8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				3EE3F7142A9372B9000325C8 /* Explanation */,
 				3EE3F70F2A934BBE000325C8 /* Map */,
 				3EE3F70A2A927298000325C8 /* Result */,
 				3EE3F7072A9263E9000325C8 /* Question */,
@@ -304,6 +304,22 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
+		3EE3F7142A9372B9000325C8 /* Explanation */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3F7152A9372DA000325C8 /* View */,
+			);
+			path = Explanation;
+			sourceTree = "<group>";
+		};
+		3EE3F7152A9372DA000325C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3ED1099729EFC08900AB8BAF /* ExplanationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3EF23C7629DAC07900189F8D = {
 			isa = PBXGroup;
 			children = (
@@ -448,7 +464,7 @@
 				3EF23C8329DAC07900189F8D /* SlideMathApp.swift in Sources */,
 				3EE3F7032A9260E3000325C8 /* QuestionUseCase.swift in Sources */,
 				889CBB2729E2E372005039CF /* QuestionView.swift in Sources */,
-				3ED1099829EFC08900AB8BAF /* VideoView.swift in Sources */,
+				3ED1099829EFC08900AB8BAF /* ExplanationView.swift in Sources */,
 				3EE3F7002A925E3E000325C8 /* QuestionRepository.swift in Sources */,
 				3E2F949529DEA0CF00A03B0B /* PrimaryButton.swift in Sources */,
 				3E635A6029E8578D001989EA /* View+Hidden.swift in Sources */,

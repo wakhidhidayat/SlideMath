@@ -61,7 +61,7 @@ struct ResultView: View {
             
         }
         .sheet(isPresented: $viewModel.isSheetPresent) {
-            VideoView(fileName: viewModel.videoFileName)
+            ExplanationView(fileName: viewModel.videoFileName)
         }
         .onAppear {
             switch viewModel.result {

@@ -35,7 +35,6 @@ struct QuestionView: View {
                         }
                         Spacer()
                         Button {
-                            // TODO: Show Walkthrough
                         } label: {
                             Image("help_button")
                         }
@@ -44,19 +43,21 @@ struct QuestionView: View {
     """, position: .top)
                     }
                     
-                    ProgressView(
-                        value: Double(viewModel.currentText + 1),
-                        total: viewModel.questions.isEmpty ? 0 : Double(viewModel.questions[viewModel.selectedQuestion].texts.count)
-                    )
-                        .tint(Color.blue)
-                        .listRowSeparator(.visible)
-                        .listRowSeparatorTint(Color.blue)
-                        .listSectionSeparator(.visible)
-                        .listSectionSeparatorTint(Color.blue)
-                        .background(Color(.white))
-                        .frame(width: 300, height: 23)
-                        .scaleEffect(x: 1, y: 24, anchor: .center)
-                        .cornerRadius(64)
+                    if viewModel.questions.isEmpty == false {
+                        ProgressView(
+                            value: Double(viewModel.currentText + 1),
+                            total: Double(viewModel.questions[viewModel.selectedQuestion].texts.count)
+                        )
+                            .tint(Color.blue)
+                            .listRowSeparator(.visible)
+                            .listRowSeparatorTint(Color.blue)
+                            .listSectionSeparator(.visible)
+                            .listSectionSeparatorTint(Color.blue)
+                            .background(Color(.white))
+                            .frame(width: 300, height: 23)
+                            .scaleEffect(x: 1, y: 24, anchor: .center)
+                            .cornerRadius(64)
+                    }
                     Text(viewModel.questions.isEmpty ? "" : viewModel.questions[viewModel.selectedQuestion].texts[viewModel.currentText])
                         .font(.title2)
                         .fontWeight(.semibold)
